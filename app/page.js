@@ -1,65 +1,85 @@
-import Image from "next/image";
-
+"use client"
 export default function Home() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.js file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
+    <>
+      {/* होम */}
+      <section id="home" style={{ minHeight: "100vh", background: "#0a0a0f", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", textAlign: "center", padding: "2rem" }}>
+        <h1 style={{ color: "#ff6b00", fontSize: "clamp(2rem, 5vw, 3.5rem)", fontWeight: 900, marginBottom: "1rem" }}>
+          नरेंद्र कंप्यूटर्स
+        </h1>
+        <p style={{ color: "#f0ebe0", fontSize: "clamp(1rem, 2.5vw, 1.4rem)", maxWidth: "600px", marginBottom: "2rem", lineHeight: 1.6 }}>
+          वाराणसी कैंट की भरोसेमंद प्रिंटिंग सेवा — ऑफसेट, फ्लेक्स, डिजिटल और बहुत कुछ
+        </p>
+        <div style={{ display: "flex", gap: "1rem", flexWrap: "wrap", justifyContent: "center" }}>
+          <a href="#order" style={{ background: "#ff6b00", color: "#fff", padding: "0.8rem 2rem", borderRadius: "6px", textDecoration: "none", fontWeight: 700, fontSize: "1rem" }}>
+            ऑर्डर करें
+          </a>
+          <a href="#services" style={{ border: "2px solid #ff6b00", color: "#ff6b00", padding: "0.8rem 2rem", borderRadius: "6px", textDecoration: "none", fontWeight: 700, fontSize: "1rem" }}>
+            सेवाएँ देखें
+          </a>
+        </div>
+      </section>
+
+      {/* सेवाएँ */}
+      <section id="services" style={{ background: "#0f0f1a", padding: "5rem 2rem" }}>
+        <h2 style={{ color: "#ff6b00", textAlign: "center", fontSize: "2rem", marginBottom: "3rem" }}>हमारी सेवाएँ</h2>
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))", gap: "1.5rem", maxWidth: "1100px", margin: "0 auto" }}>
+          {[
+            { id: "offset-printing", icon: "📋", name: "ऑफसेट प्रिंटिंग", desc: "ब्रोशर, नोटिस, पुस्तिका — बड़ी मात्रा में किफ़ायती" },
+            { id: "flex-banner", icon: "🎪", name: "फ्लेक्स / बैनर", desc: "दुकान साइनबोर्ड, होर्डिंग — तेज़ डिलीवरी" },
+            { id: "digital-printing", icon: "🖨️", name: "डिजिटल प्रिंटिंग", desc: "रंगीन व ब्लैक-व्हाइट — हर साइज़ में" },
+            { id: "id-card", icon: "🪪", name: "आई-कार्ड", desc: "स्कूल, ऑफिस — PVC व लैमिनेटेड" },
+            { id: "photocopy-scan", icon: "📄", name: "फोटोकॉपी / स्कैनिंग", desc: "दस्तावेज़ तैयार करना, पेपर कॉपियाँ" },
+            { id: "graphic-design", icon: "🎨", name: "ग्राफिक डिज़ाइन", desc: "लोगो, लेआउट, पोस्टर — प्रिंट के लिए तैयार" },
+          ].map(({ id, icon, name, desc }) => (
+            <div key={id} id={id} style={{ background: "#1a1a2e", borderRadius: "10px", padding: "1.5rem", border: "1px solid #ff6b0022", transition: "border 0.2s" }}
+              onMouseEnter={e => e.currentTarget.style.border = "1px solid #ff6b00"}
+              onMouseLeave={e => e.currentTarget.style.border = "1px solid #ff6b0022"}
             >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+              <div style={{ fontSize: "2rem", marginBottom: "0.5rem" }}>{icon}</div>
+              <h3 style={{ color: "#ff6b00", marginBottom: "0.5rem" }}>{name}</h3>
+              <p style={{ color: "#ccc", fontSize: "0.9rem", lineHeight: 1.5 }}>{desc}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* उत्पाद */}
+      <section id="products" style={{ background: "#0a0a0f", padding: "5rem 2rem" }}>
+        <h2 style={{ color: "#ff6b00", textAlign: "center", fontSize: "2rem", marginBottom: "3rem" }}>उत्पाद</h2>
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(180px, 1fr))", gap: "1rem", maxWidth: "900px", margin: "0 auto" }}>
+          {["पोस्टर", "बैनर", "ब्रोशर", "विज़िटिंग कार्ड", "लेटरहेड", "लिफाफा", "डायरी", "शादी कार्ड"].map((item) => (
+            <div key={item} style={{ background: "#1a1a2e", borderRadius: "8px", padding: "1.2rem", textAlign: "center", color: "#f0ebe0", border: "1px solid #ff6b0022", fontSize: "0.95rem" }}>
+              {item}
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* संपर्क करें */}
+      <section id="contact" style={{ background: "#0f0f1a", padding: "5rem 2rem" }}>
+        <h2 style={{ color: "#ff6b00", textAlign: "center", fontSize: "2rem", marginBottom: "3rem" }}>संपर्क करें</h2>
+        <div style={{ maxWidth: "700px", margin: "0 auto", display: "flex", flexDirection: "column", gap: "1rem", color: "#f0ebe0", fontSize: "1rem" }}>
+          <p>📍 S15/2-KH-2, घौसाबाद, कैंट, वाराणसी-221002</p>
+          <p>
+            📞{" "}
+            <a href="tel:9415204522" style={{ color: "#ff6b00", textDecoration: "none" }}>9415204522</a>
+            {" | "}
+            <a href="tel:9335254551" style={{ color: "#ff6b00", textDecoration: "none" }}>9335254551</a>
           </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
+          <p>
+            ✉️{" "}
+            <a href="mailto:narendracomputer11@gmail.com" style={{ color: "#ff6b00", textDecoration: "none" }}>narendracomputer11@gmail.com</a>
+          </p>
+          <p>🕐 सोमवार–शनिवार: सुबह 10:00 – शाम 8:00</p>
+          <div style={{ marginTop: "1rem", borderRadius: "10px", overflow: "hidden" }}>
+            <iframe
+              src="https://www.google.com/maps?q=S15/2-KH-2,+Ghausabad,+Cantt,+Varanasi+221002&output=embed"
+              width="100%" height="300" style={{ border: 0 }} allowFullScreen loading="lazy"
             />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+          </div>
         </div>
-      </main>
-    </div>
+      </section>
+    </>
   );
 }
